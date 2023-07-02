@@ -1,10 +1,9 @@
-import { Component } from 'react';
 import Section from 'components/Section/Section';
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
-export class FeedbackOptions extends Component {
-  render() {
-    const { onLeaveFeedback, options } = this.props;
+
+const FeedbackOptions = ({onLeaveFeedback, options}) => {
+ 
     return (
       <Section title={'Please leave feedback!'}>
         <ul className={css.feedback__list}>
@@ -23,10 +22,12 @@ export class FeedbackOptions extends Component {
         </ul>
       </Section>
     );
-  }
+  
 }
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
+
+export default FeedbackOptions;

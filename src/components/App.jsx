@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Statistics } from './Statistics/Statistics';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
 
 export class App extends Component {
@@ -28,16 +28,17 @@ export class App extends Component {
   };
 
   render() {
+    const total = this.countTotalFeedback();
     return (
       <>
         <FeedbackOptions
           options={Object.keys(this.state)}
           onLeaveFeedback={this.handleClickFeedBack}
         />
-        {this.countTotalFeedback() ? (
+        {total ? (
           <Statistics
             options={this.state}
-            total={this.countTotalFeedback()}
+            total={total}
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         ) : (
