@@ -5,14 +5,19 @@ import PropTypes from 'prop-types';
 
 export class Statistics extends Component {
   render() {
-    const { good, neutral, bad, total, positivePercentage } = this.props;
-
+    const { options, total, positivePercentage } = this.props;
+    const optionsEntries = Object.entries(options);
     return (
       <Section title={'Statistics'}>
         <ul className={css.statistics__list}>
-          <li>Good: {good}</li>
-          <li>Neutral: {neutral}</li>
-          <li>Bad: {bad}</li>
+          {optionsEntries.map(optionsEntry => {
+            return (
+              <li key={optionsEntry[0]}>
+                {optionsEntry[0]}: {optionsEntry[1]}
+              </li>
+            );
+          })}
+
           <li>Total: {total}</li>
           <li>Positive feedback: {positivePercentage}%</li>
         </ul>
@@ -22,9 +27,9 @@ export class Statistics extends Component {
 }
 
 Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
+  // good: PropTypes.number.isRequired,
+  // neutral: PropTypes.number.isRequired,
+  // bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
 };
